@@ -108,9 +108,9 @@ configuration CONF_Default of OutputModule is
 		for comp_dqs_ff0: FlipFlopD
 			use work.FlipFlopD(RisingEdge);
 		end for;
-		-- Falling edge flip flops for DQS delay line
+		-- Asynchronous resrt falling edge FFs for DQS delay line
 		for comp_dqs_ff_i
-			use work.FlipFlopD(FallingEdge);
+			use work.FlipFlopD(AsynchRstFallingEdge);
 		end for;
 		-- Tri state drivers' output enable should have asynchrnous reset to
 		-- avoid short circuits on the bus
