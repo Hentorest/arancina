@@ -15,8 +15,8 @@ entity OutputModule is
 
 		D		: in signed(8 downto 0);	-- Data
 		mask	: in std_logic;				-- Data mask
+		DDR_D	: out signed(8 downto 0);	-- Output data	(TriState)
 		DDR_mask: out std_logic;			-- Output data mask
-		DDR_Q	: out signed(8 downto 0);	-- Output data	(TriState)
 
 		DQS		: in std_logic;				-- DQS
 		DDR_DQS : out std_logic				-- Output DQS (TriState)
@@ -75,7 +75,7 @@ begin
 	-- Output tri state drivers
 	gen_q_tristates: for i in 0 to 7 generate
 		comp_q_tsd_i: TriStateDriver
-			port map(synch_D(i), synch_oe, DDR_Q(i));
+			port map(synch_D(i), synch_oe, DDR_D(i));
 	end generate;
 
 	---- DQS delay line
